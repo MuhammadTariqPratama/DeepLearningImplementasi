@@ -1,43 +1,56 @@
 # Studi Kasus dan Implementasi Materi
 
-## Deskripsi
+## Tentang proyek
 
-Repositori ini berisi studi kasus dan contoh implementasi dari enam materi dalam `rangkuman.txt`: analisis data dan AI, HPC, GIS, machine learning, HCI dan visualisasi, serta AI untuk pemantauan deforestasi.
+Repositori ini berisi enam contoh studi kasus yang menunjukkan cara menerapkan materi analisis data, komputasi berkinerja tinggi (HPC), GIS, machine learning, HCI dan visualisasi, serta AI untuk pemantauan deforestasi. Data yang digunakan dalam contoh bersifat sintetis.
 
-## Isi
+## Daftar materi
 
-- **Analisis data dan AI** — analisis pendapatan, laba, margin, dan piutang. (`kasus/01_analisis_data/`)
-- **HPC** — simulasi skenario komputasi lokal dan contoh job Slurm. (`kasus/02_hpc/`)
-- **GIS** — pemeringkatan kandidat lokasi dan ekspor GeoJSON. (`kasus/03_gis/`)
-- **Machine learning** — klasifikasi risiko keterlambatan pembayaran dan evaluasi metrik. (`kasus/04_machine_learning/`)
-- **HCI dan visualisasi** — dashboard interaktif sederhana. (`kasus/05_hci_visualisasi/`)
-- **Deforestasi** — klasifikasi dugaan penyebab alert dan antrean tinjauan manusia. (`deforestation_case.py`, `kasus/06_deforestation/`)
+| Materi | Isi | Folder |
+| --- | --- | --- |
+| 1. Analisis data | Analisis pendapatan, laba, margin, dan piutang | [`1_analisis_data/`](1_analisis_data/) |
+| 2. HPC | Pemrosesan skenario secara paralel dan contoh job Slurm | [`2_hpc/`](2_hpc/) |
+| 3. GIS | Pemeringkatan kandidat lokasi dan ekspor data GeoJSON | [`3_gis/`](3_gis/) |
+| 4. Machine learning | Klasifikasi risiko keterlambatan pembayaran dan evaluasi model | [`4_machine_learning/`](4_machine_learning/) |
+| 5. HCI dan visualisasi | Dashboard interaktif untuk meninjau alert lingkungan | [`5_hci_visualisasi/`](5_hci_visualisasi/) |
+| 6. AI dan deforestasi | Contoh pengelompokan dugaan penyebab alert | [`6_deforestation/`](6_deforestation/) |
 
-Setiap materi dilengkapi studi kasus dan petunjuk penggunaan. Indeks lengkap tersedia di [`kasus/README.md`](kasus/README.md).
+Setiap folder berisi `studi_kasus.md` dan kode contoh `main.py`.
 
 ## Persiapan
 
-Gunakan Python 3.10 atau lebih baru. Dari folder utama proyek, pasang dependensi:
+Gunakan Python 3.10 atau lebih baru. Contoh analisis data dan machine learning memerlukan `pandas`, `numpy`, dan `scikit-learn`. Pasang dependensi tersebut dengan:
 
 ```powershell
-python -m pip install -r requirements.txt
+python -m pip install numpy pandas scikit-learn
 ```
 
 ## Menjalankan contoh
 
-Jalankan perintah dari folder utama proyek:
+Jalankan perintah dari folder utama repositori:
 
 ```powershell
-python .\kasus\01_analisis_data\main.py
-python .\kasus\02_hpc\main.py --workers 2
-python .\kasus\03_gis\main.py
-python .\kasus\04_machine_learning\main.py
-python .\kasus\05_hci_visualisasi\main.py
-python .\kasus\06_deforestation\main.py --generate-demo --output-dir .\kasus\06_deforestation\output
+python .\1_analisis_data\main.py
+python .\2_hpc\main.py --workers 2
+python .\3_gis\main.py
+python .\4_machine_learning\main.py
+python .\5_hci_visualisasi\main.py
 ```
 
-Hasil program disimpan pada folder `output` masing-masing materi. Dashboard HCI dapat dibuka di `kasus/05_hci_visualisasi/output/dashboard.html`.
+Hasil setiap program disimpan di folder `output` pada folder materi terkait. Dashboard dari materi HCI dapat dibuka melalui `5_hci_visualisasi/output/dashboard.html`.
 
-## Catatan
+### Menjalankan job HPC di klaster
 
-Data contoh dibuat untuk demonstrasi dan tidak mewakili kondisi nyata. Hasil model dan skor lokasi bukan rekomendasi atau keputusan otomatis. File Slurm dijalankan pada klaster HPC Linux yang mendukung Slurm, bukan langsung dari PowerShell Windows.
+`2_hpc/job.slurm` adalah contoh untuk klaster Linux yang menggunakan Slurm. Sesuaikan konfigurasi sumber daya dan lingkungan Python dengan klaster, lalu jalankan dari folder `2_hpc`:
+
+```bash
+sbatch job.slurm
+```
+
+### Status materi deforestasi
+
+Folder `6_deforestation` berisi launcher dan dokumentasi. Launcher tersebut merujuk ke `deforestation_case.py`, tetapi berkas itu belum tersedia di repositori ini; karena itu, contoh deforestasi belum dapat dijalankan.
+
+## Batasan
+
+Data dan hasil contoh hanya untuk demonstrasi, bukan gambaran kondisi nyata. Skor lokasi dan keluaran model tidak boleh dianggap sebagai rekomendasi atau keputusan otomatis. Validasi dengan data yang sesuai dan penilaian ahli diperlukan sebelum penerapan nyata.
